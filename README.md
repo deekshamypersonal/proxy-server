@@ -66,6 +66,7 @@ If you add a host to the blocked list using the admin console (e.g., `http://htt
 - *Expected Result*: The proxy should return a **403 Forbidden** response.
 
   Blocked URL Screenshot
+  
   <img width="568" alt="image" src="https://github.com/user-attachments/assets/57dedf97-57c4-474f-ac89-019bd8ae6bc5">
 
 
