@@ -7,19 +7,17 @@ This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java.
 ## Key Features
 
 - **Multithreading & Thread Pooling**:  
-  Uses a configurable thread pool to handle multiple concurrent client requests without blocking new connections. This ensures the server can scale to handle higher loads.
+  Uses a configurable thread pool to handle multiple concurrent client requests without blocking new connections.
 
 - **LRU Caching**:  
   Employs an **LRU (Least Recently Used) Cache** to store previously requested content. On subsequent requests for the same resource, the server can return the cached response, reducing latency and improving performance.
 
 - **Dynamic Host Blocking**:  
-  Maintains a set of blocked hosts that can be updated at runtime. An administrative thread runs in the background, allowing you to add new blocked domains without restarting the server. Blocked hosts return a **403 Forbidden** response.
+  Maintains a set of blocked hosts that can be updated at runtime. An admin thread runs in the background, allowing you to add new blocked domains without restarting the server. Blocked hosts return a **403 Forbidden** response.
 
 - **Support for HTTPS (Tunneling)**:  
   Implements HTTPS tunneling via the `CONNECT` method. The proxy establishes a direct tunnel between the client and target server, ensuring encrypted traffic remains private.
 
-- **Administrative Interface via Console**:  
-  An admin thread reads from standard input, enabling you to dynamically add blocked URLs or gracefully shut down the server.
 
 ## How It Works
 
