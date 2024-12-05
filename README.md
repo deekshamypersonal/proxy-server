@@ -21,9 +21,6 @@ This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java.
 - **Administrative Interface via Console**:  
   An admin thread reads from standard input, enabling you to dynamically add blocked URLs or gracefully shut down the server.
 
-- **Graceful Shutdown**:  
-  Ensures that ongoing tasks are completed before shutting down, preventing abrupt termination and potential data corruption.
-
 ## How It Works
 
 1. **Client Requests**: A client (e.g., browser or Postman) sends an HTTP/HTTPS request to the proxy.
@@ -33,53 +30,46 @@ This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java.
 4. **Cache Hit**: On subsequent requests for the same resource, the proxy serves the cached version directly, significantly reducing the response time.
 5. **HTTPS Tunneling**: For HTTPS requests, the proxy establishes a TCP tunnel without decrypting the data, ensuring secure end-to-end encryption.
 
-## Limitations
-
-- **No Authentication Support**: Currently, the proxy does not implement authentication for clients.
-- **No Advanced Caching Policies**: Caching does not honor HTTP Cache-Control headers. It simply uses a capacity-based LRU policy.
-- **Limited Robustness**: Error handling is basic. More sophisticated error recovery, logging, or load balancing features could be added.
-- **Blocking is Hostname-based Only**: The blocking feature relies on hostnames. IP-based blocking or pattern-based blocking is not implemented.
-- **No SSL Interception**: The proxy does not decrypt HTTPS traffic; it merely tunnels it, so features like URL-based blocking on HTTPS are limited.
-
 ## Demo
 
 **Setup**:  
 1. Run the proxy server on port `8080`.
-2. Configure your client (e.g., Postman) to use `localhost:8080` as the proxy.
+2. Configure client (e.g., Postman) to use `localhost:8080` as the proxy.
 
 ### 1. Cache Miss vs Cache Hit
 
 - **First Request (Cache Miss)**:  
-  When you hit a URL (e.g., `http://example.com`) for the first time via Postman, the proxy must fetch it from the origin server.  
+  When you hit a URL (e.g., `http://neverssl.com`) for the first time via Postman, the proxy must fetch it from the origin server.  
   - *Expected Result*: Longer response time, as the response is not cached yet.
   
-  *Screenshot Example*:  
-  ![Cache Miss Screenshot](./screenshots/cache_miss.png)
+  *Screenshot*:  
+  ![Cache Miss Screenshot]
+
+  <img width="641" alt="image" src="https://github.com/user-attachments/assets/18dcb321-aa9e-4c8a-94e0-fe653e0299fd">
+  <img width="354" alt="image" src="https://github.com/user-attachments/assets/26e16a57-28bd-4f75-aab5-a8fe4fe2d052">
+
+
 
 - **Second Request (Cache Hit)**:  
   Sending the same request again should return the response much faster, since it’s now served from the cache.  
   - *Expected Result*: Shorter response time on the second request.
   
-  *Screenshot Example*:  
-  ![Cache Hit Screenshot](./screenshots/cache_hit.png)
+  *Screenshot*:  
+  ![Cache Hit Screenshot]
+
+  <img width="579" alt="image" src="https://github.com/user-attachments/assets/4b5756d2-5246-4336-80b4-de26a60cbc7c">
+  <img width="395" alt="image" src="https://github.com/user-attachments/assets/63702439-496a-4776-88ba-7194043838e3">
+
+
 
 ### 2. Blocked URL  
-If you add a host to the blocked list using the admin console (e.g., `example.com`), and then request `http://example.com` again:
+If you add a host to the blocked list using the admin console (e.g., `http://httpbin.org`), and then request `http://httpbin.org` again:
 
 - *Expected Result*: The proxy should return a **403 Forbidden** response.
 
-  *Screenshot Example*:  
-  ![Blocked URL Screenshot](./screenshots/blocked_url.png)
+  *Screenshot*:  
+  ![Blocked URL Screenshot]
+  <img width="378" alt="image" src="https://github.com/user-attachments/assets/bab1d6af-9c5a-4170-81ed-bd90df4f3c41">
 
-### 3. HTTPS Request  
-When you attempt to access `https://example.com`, the proxy sets up a tunnel. The initial `CONNECT` request is responded to with `200 Connection Established`, and all subsequent encrypted communication passes through the proxy.
 
-  *Screenshot Example*:  
-  ![HTTPS Tunneling Screenshot](./screenshots/https_tunneling.png)
 
-## Getting Started
-
-1. **Build & Run**:  
-   ```bash
-   javac -cp .:libs/* org/test3/*.java
-   java -cp .:libs/* org.test3.ProxyServer 8080
