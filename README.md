@@ -10,7 +10,7 @@ This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java.
   Uses a configurable thread pool to handle multiple concurrent client requests without blocking new connections.
 
 - **LRU Caching**:  
-  Employs an **LRU (Least Recently Used) Cache** to store previously requested content. On subsequent requests for the same resource, the server can return the cached response, reducing latency and improving performance.
+  Implements an **LRU (Least Recently Used) Cache** to store previously requested content. On subsequent requests for the same resource, the server can return the cached response, reducing latency and improving performance.
 
 - **Dynamic Host Blocking**:  
   Maintains a set of blocked hosts that can be updated at runtime. An admin thread runs in the background, allowing you to add new blocked domains without restarting the server. Blocked hosts return a **403 Forbidden** response.
