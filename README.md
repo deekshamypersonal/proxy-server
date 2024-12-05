@@ -41,11 +41,11 @@ This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java.
 - **First Request (Cache Miss)**:  
   When you hit a URL (e.g., `http://neverssl.com`) for the first time via Postman, the proxy must fetch it from the origin server.  
   - *Expected Result*: Longer response time, as the response is not cached yet.
-  
-  *Screenshot*:  
-  ![Cache Miss Screenshot]
+    
+  Cache Miss Screenshot
 
-  <img width="641" alt="image" src="https://github.com/user-attachments/assets/18dcb321-aa9e-4c8a-94e0-fe653e0299fd">
+  <img width="608" alt="image" src="https://github.com/user-attachments/assets/1451334c-3ec0-420a-9b40-4166761d379d">
+
   <img width="354" alt="image" src="https://github.com/user-attachments/assets/26e16a57-28bd-4f75-aab5-a8fe4fe2d052">
 
 
@@ -53,11 +53,11 @@ This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java.
 - **Second Request (Cache Hit)**:  
   Sending the same request again should return the response much faster, since it’s now served from the cache.  
   - *Expected Result*: Shorter response time on the second request.
-  
-  *Screenshot*:  
-  ![Cache Hit Screenshot]
+   
+  Cache Hit Screenshot
 
-  <img width="579" alt="image" src="https://github.com/user-attachments/assets/4b5756d2-5246-4336-80b4-de26a60cbc7c">
+  <img width="627" alt="image" src="https://github.com/user-attachments/assets/a19c57f3-4d21-453a-9e44-bd7028d3867a">
+
   <img width="395" alt="image" src="https://github.com/user-attachments/assets/63702439-496a-4776-88ba-7194043838e3">
 
 
@@ -67,9 +67,9 @@ If you add a host to the blocked list using the admin console (e.g., `http://htt
 
 - *Expected Result*: The proxy should return a **403 Forbidden** response.
 
-  *Screenshot*:  
-  ![Blocked URL Screenshot]
-  <img width="378" alt="image" src="https://github.com/user-attachments/assets/bab1d6af-9c5a-4170-81ed-bd90df4f3c41">
+  Blocked URL Screenshot
+  <img width="568" alt="image" src="https://github.com/user-attachments/assets/57dedf97-57c4-474f-ac89-019bd8ae6bc5">
+
 
 
 
