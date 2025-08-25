@@ -1,5 +1,11 @@
 # Multithreaded Proxy Server
 
+## Table of Contents
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [How It Works](#how-it-works)
+- [Demo](#demo)
+
 ## Overview
 
 This project is a **Multithreaded HTTP/HTTPS Proxy Server** implemented in Java. It intercepts client HTTP/HTTPS requests, forwards them to the target server, and then returns the response back to the client. The server uses a **thread pool** for handling multiple concurrent clients efficiently. Additionally, an **LRU Cache** is implemented to speed up responses for frequently requested pages, and there’s a built-in mechanism to block specific hosts at runtime.
